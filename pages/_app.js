@@ -35,10 +35,6 @@ export default class _app extends PureComponent {
     }, () => setTimeout(() => location.reload(), 3500))
   }
 
-  resetValues = () => {
-    location.reload()
-  }
-
   setKey = (e) => {
     var id = e.target.id;
     var cls = e.target.className;
@@ -274,11 +270,6 @@ export default class _app extends PureComponent {
     })
   }
 
-  playAudio(url) {
-    var a = new Audio(url);
-    a.play();
-  }
-
   startGame = () => {
     this.setState({
       player: 'none',
@@ -341,9 +332,9 @@ export default class _app extends PureComponent {
         </div>
 
         {this.state.dev == true &&
-          <div>
-            <h1>Thank You For Playing</h1>
-            <h3>Developed by Rohit Ninawe!</h3>
+          <div className='devMsg'>
+            <span className='TYMsg'>Thank You For Playing</span>
+            <span className='devName'>Developed by Rohit Ninawe!</span>
           </div>
         }
 
@@ -356,7 +347,9 @@ export default class _app extends PureComponent {
               placeholder='Player 2'
               onChange={this.p2nm} />
           </div>
+          <div className='enterBtnDiv'>
           <button className='enterBtn' onClick={this.startGame}>ENTER</button>
+          </div>
         </div>
         <style jsx>
           {`
@@ -394,6 +387,12 @@ export default class _app extends PureComponent {
               .playerDetails{
                 display: ${this.state.player};
               }
+              .enterBtnDiv{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+              }
               .playerNames{
                 width: 100%;
                 display: flex;
@@ -416,8 +415,6 @@ export default class _app extends PureComponent {
               //text-shadow: 6px 6px 21px #d2d282;  for X
               //text-shadow: 6px 6px 21px #92bae2;  for O
               .enterBtn{
-                margin-left: 304px;
-                margin-top: 40px;
                 height: 50px;
                 background-color: aqua;
                 border-radius: 8px;
@@ -427,11 +424,21 @@ export default class _app extends PureComponent {
                 font-size: 1.1em;
                 font-family: cursive;
               }
-              h1{
-                color: white;
+              .devMsg{
+                display: flex;
+                flex-direction: column;
+                width: 500px;
+                height: 200px;
+                justify-content: space-around;
+                align-items: center;
               }
-              h3{
+              .TYMsg{
                 color: white;
+                font-size: 3em;
+              }
+              .devName{
+                color: white;
+                font-size: 2em;
               }
               .mainBox {
                 display: ${this.state.mainbox};
@@ -508,7 +515,107 @@ export default class _app extends PureComponent {
                 to {
                     transform:rotate(360deg);
                 }
-            }
+              }
+              @media screen and (max-width: 479px) {
+               
+              .msg{
+                display: ${this.state.msg};
+                color: white;
+                font-size: 1.5em;
+              }
+
+              .playerDetails{
+                display: ${this.state.player};
+                width: 280px;
+                height: 180px;
+              }
+
+              .ply1{
+                width: 35%;
+                font-size: 0.75em;
+                height: 40px;
+                border-radius: 40px;
+                font-weight: 700;
+                padding-left: 30px;
+                outline: none;
+                font-family: cursive;
+              }
+
+              .enterBtnDiv{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 90px;
+              }
+
+              .enterBtn{
+                height: 30px;
+                background-color: aqua;
+                border-radius: 8px;
+                outline: none;
+                width: 100px;
+                padding: 4px;
+                font-size: 0.75em;
+                font-family: cursive;
+              }
+              
+              .gameDisplay{
+                margin-bottom: 140px;
+                margin-top: 0px;
+              }
+               
+              .box{
+                height: 280px;
+                width: 280px;
+                cursor: pointer;
+                animation-name: spin;
+                animation-duration: 1000ms;
+                animation-iteration-count: 1;
+                animation-timing-function: linear;
+              } 
+              
+              .plHeading{
+                display: flex;
+                justify-content: space-between;
+                font-family: cursive;
+                font-weight: 600;
+                font-size: 1.2em;
+              }
+              
+              .devMsg{
+                display: flex;
+                flex-direction: column;
+                width: 250px;
+                height: 100px;
+                justify-content: space-around;
+                align-items: center;
+              }
+              .TYMsg{
+                color: white;
+                font-size: 1.5em;
+              }
+              .devName{
+                color: white;
+                font-size: 1em;
+              }
+              
+              .plName{
+                display: flex;
+                justify-content: space-between;
+                font-family: cursive;
+                font-weight: 500;
+                font-size: 1em;
+              }
+
+              .sepBox{
+                width: 33.33%;
+                display: flex;
+                color: white;
+                justify-content: center;
+                align-items: center;
+                font-size: 5em;
+              } 
+                }
           `}
         </style>
       </div>
