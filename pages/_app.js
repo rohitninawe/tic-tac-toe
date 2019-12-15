@@ -462,6 +462,7 @@ export default class _app extends PureComponent {
                 animation-duration: 1000ms;
                 animation-iteration-count: 1;
                 animation-timing-function: linear;
+                -webkit-tap-highlight-color: transparent;
               }
               .spinner{
                 animation-name: spinner;
@@ -584,6 +585,7 @@ export default class _app extends PureComponent {
                 animation-duration: 1000ms;
                 animation-iteration-count: 1;
                 animation-timing-function: linear;
+                -webkit-tap-highlight-color: transparent;
               } 
               
               .plHeading{
