@@ -416,7 +416,11 @@ export default class _app extends PureComponent {
                 align-items: center;
                 height: 100%;
                 width: 100%;
-                user-select: none;
+                -webkit-user-select:none; 
+                -webkit-touch-callout:none; 
+                -moz-user-select:none; 
+                -ms-user-select:none; 
+                user-select:none;
               }
               //text-shadow: 6px 6px 21px #d2d282;  for X
               //text-shadow: 6px 6px 21px #92bae2;  for O
