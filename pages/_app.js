@@ -365,7 +365,6 @@ export default class _app extends PureComponent {
               }
               .gameDisplay{
                 margin-bottom: 160px;
-                margin-top: -150px;
               }
               span {
                 color: white;
@@ -382,7 +381,7 @@ export default class _app extends PureComponent {
                 justify-content: space-between;
                 font-family: cursive;
                 font-weight: 700;
-                font-size: 1.6em;
+                font-size: 1em;
               }
               .playerDetails{
                 display: ${this.state.player};
@@ -444,8 +443,8 @@ export default class _app extends PureComponent {
                 display: ${this.state.mainbox};
                 }
               .box{
-                height: 600px;
-                width: 600px;
+                height: 400px;
+                width: 450px;
                 cursor: pointer;
                 animation-name: spin;
                 animation-duration: 1000ms;
@@ -498,7 +497,7 @@ export default class _app extends PureComponent {
                 color: white;
                 justify-content: center;
                 align-items: center;
-                font-size: 12em;
+                font-size: 7em;
               }              
               @keyframes spin {
                   from {
