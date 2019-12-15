@@ -39,22 +39,23 @@ export default class _app extends PureComponent {
     var id = e.target.id;
     var cls = e.target.className;
     var val;
-    // document.getElementById(id).cl
-    if (document.getElementById(id).innerHTML === '') {
-      this.setState({
-        tictoc: !this.state.tictoc
-      })
-      if (this.state.tictoc == true) {
-        val = 'X'
+    if (this.state.won == false) {
+      if (document.getElementById(id).innerHTML === '') {
+        this.setState({
+          tictoc: !this.state.tictoc
+        })
+        if (this.state.tictoc == true) {
+          val = 'X'
+        }
+        else {
+          val = 'O'
+        }
+        ((document.getElementById(id).innerHTML = val) && (document.getElementById(id).style.textShadow = (val == 'X' ? '6px 6px 21px #d2d282' : '6px 6px 21px #92bae2')))
+        setTimeout(() => {
+          this.callWinner(cls)
+        }, 500
+        )
       }
-      else {
-        val = 'O'
-      }
-      ((document.getElementById(id).innerHTML = val) && (document.getElementById(id).style.textShadow = (val == 'X' ? '6px 6px 21px #d2d282' : '6px 6px 21px #92bae2')))
-      setTimeout(() => {
-        this.callWinner(cls)
-      }, 500
-      )
     }
     console.log(document.getElementById(id).innerHTML)
     console.log(val)
@@ -259,7 +260,7 @@ export default class _app extends PureComponent {
         this.state.won == false && alert('Game Over!');
         setTimeout(() => this.endGame(), 4000)
       })
-      
+
     }
 
   }
@@ -354,7 +355,7 @@ export default class _app extends PureComponent {
               onChange={this.p2nm} />
           </div>
           <div className='enterBtnDiv'>
-          <button className='enterBtn' onClick={this.startGame}>ENTER</button>
+            <button className='enterBtn' onClick={this.startGame}>ENTER</button>
           </div>
         </div>
         <style jsx>
@@ -532,6 +533,7 @@ export default class _app extends PureComponent {
                 display: ${this.state.msg};
                 color: white;
                 font-size: 1.5em;
+                margin-bottom: 100px;
               }
 
               .playerDetails{
@@ -599,6 +601,7 @@ export default class _app extends PureComponent {
                 height: 100px;
                 justify-content: space-around;
                 align-items: center;
+                margin-bottom: 75px;
               }
               .TYMsg{
                 color: white;
