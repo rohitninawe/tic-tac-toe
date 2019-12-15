@@ -253,7 +253,7 @@ export default class _app extends PureComponent {
       }
     }
 
-    if ((u1 != '') && (u2 != '') && (u3 != '') && (m1 != '') && (m2 != '') && (m3 != '') && (l1 != '') && (l2 != '') && (l3 != '')) {
+   if(this.state.won == false) {if ((u1 != '') && (u2 != '') && (u3 != '') && (m1 != '') && (m2 != '') && (m3 != '') && (l1 != '') && (l2 != '') && (l3 != '')) {
       this.setState({
         won: false
       }, () => {
@@ -261,7 +261,7 @@ export default class _app extends PureComponent {
         setTimeout(() => this.endGame(), 4000)
       })
 
-    }
+    }} 
 
   }
 
