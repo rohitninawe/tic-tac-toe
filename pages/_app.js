@@ -253,7 +253,13 @@ export default class _app extends PureComponent {
     }
 
     if ((u1 != '') && (u2 != '') && (u3 != '') && (m1 != '') && (m2 != '') && (m3 != '') && (l1 != '') && (l2 != '') && (l3 != '')) {
-      this.state.won == false && alert('Game Over!')
+      this.setState({
+        won: false
+      }, () => {
+        this.state.won == false && alert('Game Over!');
+        setTimeout(() => this.endGame(), 4000)
+      })
+      
     }
 
   }
@@ -591,11 +597,11 @@ export default class _app extends PureComponent {
               }
               .TYMsg{
                 color: white;
-                font-size: 1.5em;
+                font-size: 1.2em;
               }
               .devName{
                 color: white;
-                font-size: 1em;
+                font-size: 0.8em;
               }
               
               .plName{
