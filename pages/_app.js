@@ -16,6 +16,22 @@ export default class _app extends PureComponent {
       won: false,
       dev: false,
     }
+    this.playAudio = (val) => {
+      switch (val) {
+        case 'x':
+          this.x.play();
+          break;
+        case 'o':
+          this.o.play();
+          break;
+        case 'start':
+          this.start.play();
+          break;
+        default:
+          console.log('no sound');
+          break;
+      }
+    }
   }
 
   componentDidMount() {
@@ -26,6 +42,7 @@ export default class _app extends PureComponent {
         player: 'block',
       })
     }, 2000)
+    this.playAudio('start')
   }
 
   endGame = () => {
@@ -46,9 +63,11 @@ export default class _app extends PureComponent {
         })
         if (this.state.tictoc == true) {
           val = 'X'
+          this.playAudio('x')
         }
         else {
           val = 'O'
+          this.playAudio('o')
         }
         ((document.getElementById(id).innerHTML = val) && (document.getElementById(id).style.textShadow = (val == 'X' ? '6px 6px 21px #d2d282' : '6px 6px 21px #92bae2')))
         setTimeout(() => {
@@ -284,10 +303,23 @@ export default class _app extends PureComponent {
     })
   }
 
+
   render() {
     return (
       <div id='main' className='body'>
         <span className='msg'>Welcome to Tic-Toc-Toe</span>
+        <audio ref={(x) => { this.x = x; }}>
+          <source src="http://sprott.physics.wisc.edu/wop/sounds/SOUND14.WAV" type="audio/wav" >
+          </source>
+        </audio>
+        <audio ref={(o) => { this.o = o; }}>
+          <source src="http://sprott.physics.wisc.edu/wop/sounds/Sound2.wav" type="audio/wav" >
+          </source>
+        </audio>
+        <audio loop={true} ref={(start) => { this.start = start; }}>
+          <source src="http://sprott.physics.wisc.edu/wop/sounds/Theme-Introshort.wav" type="audio/wav" >
+          </source>
+        </audio>
         <div className='mainBox'>
           <div className='gameDisplay'>
             <div className='plHeading'>
