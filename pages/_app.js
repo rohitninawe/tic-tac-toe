@@ -93,6 +93,7 @@ export default class _app extends PureComponent {
     var l2 = document.getElementById('l2').innerHTML;
     var l3 = document.getElementById('l3').innerHTML;
 
+if(this.state.won == false) {
     if ((u1 != '') && (u2 != '') && (u3 != '')) {
       if ((u1 === u2) && (u1 == u3)) {
 
@@ -113,8 +114,9 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
+if(this.state.won == false) {
     if ((m1 != '') && (m2 != '') && (m3 != '')) {
       if ((m1 == m2) && (m1 == m3)) {
 
@@ -135,8 +137,9 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
+if(this.state.won == false) {
     if ((l1 != '') && (l2 != '') && (l3 != '')) {
       if ((l1 == l2) && (l1 == l3)) {
 
@@ -157,9 +160,10 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
 
+if(this.state.won == false) {
     if ((u1 != '') && (m1 != '') && (l1 != '')) {
       if ((u1 == l1) && (u1 == m1)) {
 
@@ -180,9 +184,10 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
 
+if(this.state.won == false) {
     if ((u2 != '') && (m2 != '') && (l2 != '')) {
       if ((u2 == m2) && (u2 == l2)) {
 
@@ -203,9 +208,10 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
 
+if(this.state.won == false) {
     if ((u3 != '') && (l3 != '') && (m3 != '')) {
       if ((u3 == m3) && (u3 == l3)) {
 
@@ -226,8 +232,9 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
+if(this.state.won == false) {
     if ((u1 != '') && (m2 != '') && (l3 != '')) {
       if ((u1 == m2) && (u1 == l3)) {
 
@@ -248,8 +255,9 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
+if(this.state.won == false) {
     if ((u3 != '') && (m2 != '') && (l1 != '')) {
       if ((u3 == m2) && (u3 == l1)) {
 
@@ -270,9 +278,10 @@ export default class _app extends PureComponent {
           alert(this.state.p2 != '' ? this.state.p2 + ' won' : 'Player 2 won')
         }
       }
-    }
+    }} 
 
-    if ((u1 != '') && (u2 != '') && (u3 != '') && (m1 != '') && (m2 != '') && (m3 != '') && (l1 != '') && (l2 != '') && (l3 != '')) {
+
+   if(this.state.won == false) {if ((u1 != '') && (u2 != '') && (u3 != '') && (m1 != '') && (m2 != '') && (m3 != '') && (l1 != '') && (l2 != '') && (l3 != '')) {
       this.setState({
         won: false
       }, () => {
@@ -280,7 +289,7 @@ export default class _app extends PureComponent {
         setTimeout(() => this.endGame(), 4000)
       })
 
-    }
+    }} 
 
   }
 
