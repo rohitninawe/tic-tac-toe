@@ -466,6 +466,7 @@ export default class _app extends PureComponent {
                 justify-content: space-between;
               }
               .body {
+background-image: url("https://im7.ezgif.com/tmp/ezgif-7-130bf0b8c769.gif");
                 background-color: black;
                 height: 100vh;
                 display: flex;
