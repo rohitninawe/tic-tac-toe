@@ -466,10 +466,10 @@ export default class _app extends PureComponent {
                 justify-content: space-between;
               }
               .body {
-background-image: url("https://im7.ezgif.com/tmp/ezgif-7-130bf0b8c769.gif");
-background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;
+                // background-image: url("https://im7.ezgif.com/tmp/ezgif-7-130bf0b8c769.gif");
+                // background-size:     cover;                      /* <------ */
+                // background-repeat:   no-repeat;
+                // background-position: center center;
                 background-color: black;
                 height: 100vh;
                 display: flex;
