@@ -1,6 +1,7 @@
 
 import React, { PureComponent } from 'react'
 import { setTimeout } from 'timers'
+//push from android
 
 export default class _app extends PureComponent {
   constructor(props) {
