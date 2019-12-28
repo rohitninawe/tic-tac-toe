@@ -1,7 +1,6 @@
 
 import React, { PureComponent } from 'react'
 import { setTimeout } from 'timers'
-//push from android
 
 export default class _app extends PureComponent {
   constructor(props) {
@@ -562,8 +561,8 @@ export default class _app extends PureComponent {
                 height: 400px;
                 width: 450px;
                 cursor: pointer;
-                backface-visibility: visible;
-                animation-name: flip;
+               // backface-visibility: visible;
+               // animation-name: flip;
                 animation-name: spin;
                 animation-duration: 1000ms;
                 animation-iteration-count: 1;
@@ -647,14 +646,14 @@ export default class _app extends PureComponent {
                   animation-timing-function: ease-in;
                 }
               }         
-              // @keyframes spin {
-              //     from {
-              //         transform:rotate(0deg);
-              //     }
-              //     to {
-              //         transform:rotate(360deg);
-              //     }
-              // }
+               @keyframes spin {
+                   from {
+                       transform:rotate(0deg);
+                  }
+                  to {
+                       transform:rotate(360deg);
+                   }
+               }
               @keyframes spinner {
                 from {
                     transform:rotate(0deg);
@@ -730,13 +729,13 @@ export default class _app extends PureComponent {
                 height: 280px;
                 width: 280px;
                 cursor: pointer;
-                backface-visibility: visible;
-                animation-name: flip;
-                // animation-name: spin;
-                // animation-duration: 1000ms;
-                // animation-iteration-count: 1;
-                // animation-timing-function: linear;
-                // -webkit-tap-highlight-color: transparent;
+                //backface-visibility: visible;
+               // animation-name: flip;
+                 animation-name: spin;
+                 animation-duration: 1000ms;
+                 animation-iteration-count: 1;
+                 animation-timing-function: linear;
+                 -webkit-tap-highlight-color: transparent;
               } 
               
               .plHeading{
