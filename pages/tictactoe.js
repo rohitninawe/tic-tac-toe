@@ -14,7 +14,6 @@ export default class TicTacToe extends PureComponent {
       p1: '',
       p2: '',
       won: false,
-      // dev: false,
       music: false,
       audio: true
     }
@@ -49,31 +48,6 @@ export default class TicTacToe extends PureComponent {
         player: 'block',
       })
     }, 2000)
-  }
-
-  restartGame() {
-    // document.getElementById('u1').innerHTML = '';
-    // document.getElementById('u2').innerHTML = '';
-    // document.getElementById('u3').innerHTML = '';
-    // document.getElementById('m1').innerHTML = '';
-    // document.getElementById('m2').innerHTML = '';
-    // document.getElementById('m3').innerHTML = '';
-    // document.getElementById('l1').innerHTML = '';
-    // document.getElementById('l2').innerHTML = '';
-    // document.getElementById('l3').innerHTML = '';
-
-    // this.setState({
-    //   tictoc: true,
-    //   msg: 'none',
-    //   player: 'block',
-    //   mainbox: 'none',
-    //   p1: '',
-    //   p2: '',
-    //   won: false,
-    //   dev: false,
-    // })
-    console.log('close')
-    window.open('', '_self', ''); window.close();
   }
 
   endGame = () => {
@@ -127,7 +101,6 @@ export default class TicTacToe extends PureComponent {
     }
     console.log(document.getElementById(id).innerHTML)
     console.log(val)
-    // this.callWinner()
   }
 
   callWinner = (cls) => {
@@ -503,13 +476,6 @@ export default class TicTacToe extends PureComponent {
             </div>
           </div>
         </div>
-        {/* 
-        {this.state.dev == true &&
-          <div className='devMsg'>
-            <span className='TYMsg'>Thank You For Playing</span>
-            <span className='devName'>Developed by Rohit Ninawe!</span>
-          </div>
-        } */}
 
         <div className='playerDetails'>
           <div className='playerNames'>
