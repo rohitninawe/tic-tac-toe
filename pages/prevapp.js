@@ -307,14 +307,16 @@ export default class _app extends PureComponent {
   }
 
   p1nm = (e) => {
+    var val = (e.target.value).trim();
     this.setState({
-      p1: e.target.value
+      p1: val
     })
   }
 
   p2nm = (e) => {
+    var val = (e.target.value).trim();
     this.setState({
-      p2: e.target.value
+      p2: val
     })
   }
 
@@ -327,7 +329,7 @@ export default class _app extends PureComponent {
 
 
   render() {
-    if(this.state.won == true){
+    if (this.state.won == true) {
       this.playAudio('win')
     }
     return (
@@ -410,10 +412,14 @@ export default class _app extends PureComponent {
           <div className='playerNames'>
             <input className='ply1'
               placeholder='Player 1'
-              onChange={this.p1nm} />
+              onChange={this.p1nm}
+              maxLength="10" />
+
             <input className='ply1'
               placeholder='Player 2'
-              onChange={this.p2nm} />
+              onChange={this.p2nm}
+              maxLength="10" />
+
           </div>
           <div className='enterBtnDiv'>
             <button className='enterBtn' onClick={this.startGame}>ENTER</button>
@@ -430,6 +436,9 @@ export default class _app extends PureComponent {
                 padding-left: 40px;
                 outline: none;
                 font-family: cursive;
+              }
+              .music{
+                color: white; 
               }
               .gameDisplay{
                 margin-bottom: 160px;
@@ -523,11 +532,13 @@ export default class _app extends PureComponent {
                 height: 400px;
                 width: 450px;
                 cursor: pointer;
-                animation-name: spin;
-                animation-duration: 1000ms;
-                animation-iteration-count: 1;
-                animation-timing-function: linear;
-                -webkit-tap-highlight-color: transparent;
+                backface-visibility: visible;
+                animation-name: flip;
+                // animation-name: spin;
+                // animation-duration: 1000ms;
+                // animation-iteration-count: 1;
+                // animation-timing-function: linear;
+                // -webkit-tap-highlight-color: transparent;
               }
               .spinner{
                 animation-name: spinner;
@@ -576,15 +587,44 @@ export default class _app extends PureComponent {
                 justify-content: center;
                 align-items: center;
                 font-size: 7em;
-              }              
-              @keyframes spin {
-                  from {
-                      transform:rotate(0deg);
-                  }
-                  to {
-                      transform:rotate(360deg);
-                  }
-              }
+              }     
+              @keyframes flip {
+                from {
+                  transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+                  animation-timing-function: ease-out;
+                }
+              
+                40% {
+                  transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+                    rotate3d(0, 1, 0, -190deg);
+                  animation-timing-function: ease-out;
+                }
+              
+                50% {
+                  transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+                    rotate3d(0, 1, 0, -170deg);
+                  animation-timing-function: ease-in;
+                }
+              
+                80% {
+                  transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+                    rotate3d(0, 1, 0, 0deg);
+                  animation-timing-function: ease-in;
+                }
+              
+                to {
+                  transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+                  animation-timing-function: ease-in;
+                }
+              }         
+              // @keyframes spin {
+              //     from {
+              //         transform:rotate(0deg);
+              //     }
+              //     to {
+              //         transform:rotate(360deg);
+              //     }
+              // }
               @keyframes spinner {
                 from {
                     transform:rotate(0deg);
@@ -646,11 +686,13 @@ export default class _app extends PureComponent {
                 height: 280px;
                 width: 280px;
                 cursor: pointer;
-                animation-name: spin;
-                animation-duration: 1000ms;
-                animation-iteration-count: 1;
-                animation-timing-function: linear;
-                -webkit-tap-highlight-color: transparent;
+                backface-visibility: visible;
+                animation-name: flip;
+                // animation-name: spin;
+                // animation-duration: 1000ms;
+                // animation-iteration-count: 1;
+                // animation-timing-function: linear;
+                // -webkit-tap-highlight-color: transparent;
               } 
               
               .plHeading{
