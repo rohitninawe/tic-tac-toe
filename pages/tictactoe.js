@@ -1,9 +1,13 @@
 import React, { PureComponent } from 'react'
 import { setTimeout } from 'timers'
+import firebase from './Firebase';
 
 export default class TicTacToe extends PureComponent {
   constructor(props) {
     super(props)
+
+    // this.ref = firebase.firestore().collection('users');
+    // this.unsubscribe = null;
 
     this.state = {
       tictoc: true,
@@ -15,8 +19,10 @@ export default class TicTacToe extends PureComponent {
       p2: '',
       won: false,
       music: false,
-      audio: true
+      audio: true,
+      usersFromFB: []
     }
+
     this.playAudio = (val) => {
       if (this.state.audio) {
         switch (val) {
@@ -42,12 +48,33 @@ export default class TicTacToe extends PureComponent {
 
   componentDidMount() {
 
+    // this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+
+
+    console.log(firebase.database(), ' fdfd');
+
     setTimeout(() => {
       this.setState({
         msg: 'none',
         player: 'block',
       })
     }, 2000)
+  }
+
+
+  onCollectionUpdate = (querySnapshot) => {
+    const boards = [];
+    querySnapshot.forEach((doc) => {
+      const { userName } = doc.data();
+      boards.push({
+        key: doc.id,
+        doc, // DocumentSnapshot
+        userName
+      });
+    });
+    this.setState({
+      usersFromFB
+    });
   }
 
   endGame = () => {
@@ -378,6 +405,9 @@ export default class TicTacToe extends PureComponent {
     if (this.state.won == true) {
       this.playAudio('win')
     }
+    console.log(this.state.usersFromFB)
+    console.log(firebase.database(), ' fdfd');
+
     return (
       <div id='main' className='body'>
         {this.state.music == true &&
