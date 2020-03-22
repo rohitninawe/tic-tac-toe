@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { setTimeout } from 'timers'
-import firebase from './Firebase';
+import firebase from '../components/Firebase';
 
 export default class TicTacToe extends PureComponent {
   constructor(props) {
