@@ -19,7 +19,7 @@ export default class TicTacToe extends PureComponent {
       player: 'none',
       finalmsg: '',
       p1: '',
-      p2: '',
+      p2: 'Computer',
       won: false,
       music: false,
       audio: true,
@@ -93,7 +93,7 @@ export default class TicTacToe extends PureComponent {
       player: 'block',
       mainbox: 'none',
       p1: '',
-      p2: '',
+      p2: 'Computer',
       won: false,
       dev: false,
       finalmsg: '',
@@ -108,8 +108,9 @@ export default class TicTacToe extends PureComponent {
       if (document.getElementById(id).innerHTML === '') {
         this.setState({
           tictoc: !this.state.tictoc
-        })
-        if (this.state.tictoc == true) {
+        }, () => this.state.p2 == 'Computer' && setTimeout(() => this.botMove(cls), 650))
+
+        if (this.state.tictoc) {
           val = 'X'
           this.playAudio('x')
         }
@@ -117,15 +118,231 @@ export default class TicTacToe extends PureComponent {
           val = 'O'
           this.playAudio('o')
         }
-        ((document.getElementById(id).innerHTML = val) && (document.getElementById(id).style.textShadow = (val == 'X' ? '6px 6px 21px #d2d282' : '6px 6px 21px #92bae2')))
+
+        document.getElementById(id).innerHTML = val;
+        document.getElementById(id).style.textShadow = (val == 'X' ? '6px 6px 21px #d2d282' : '6px 6px 21px #92bae2');
+
         setTimeout(() => {
           this.callWinner(cls)
-        }, 500
-        )
+        }, 500)
       }
     }
     console.log(document.getElementById(id).innerHTML)
     console.log(val)
+  }
+
+  randomNoFunc() {
+    var c = Math.round(Math.random() * 10)
+    return c == 0 ? c + 5 : c > 9 ? c - 5 : c
+  }
+
+  botMove = (cls) => {
+    if (this.state.won == false) {
+      console.log('bot played')
+      var randomNo = this.randomNoFunc()
+      console.log(randomNo)
+
+      var u1 = document.getElementById('u1').innerHTML;
+      var u2 = document.getElementById('u2').innerHTML;
+      var u3 = document.getElementById('u3').innerHTML;
+      var m1 = document.getElementById('m1').innerHTML;
+      var m2 = document.getElementById('m2').innerHTML;
+      var m3 = document.getElementById('m3').innerHTML;
+      var l1 = document.getElementById('l1').innerHTML;
+      var l2 = document.getElementById('l2').innerHTML;
+      var l3 = document.getElementById('l3').innerHTML;
+
+      if (!(this.state.tictoc) && (u1 == '' || u2 == '' || u3 == '')) {   //UH
+        if ((u1 == 'O' && u2 == 'O') || (u2 == 'O' && u3 == 'O') || (u3 == 'O' && u1 == 'O')) {
+          let id = u1 == '' ? 'u1' : u2 == '' ? 'u2' : 'u3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (m1 == '' || m2 == '' || m3 == '')) {    //MH
+        if ((m1 == 'O' && m2 == 'O') || (m2 == 'O' && m3 == 'O') || (m3 == 'O' && m1 == 'O')) {
+          let id = m1 == '' ? 'm1' : m2 == '' ? 'm2' : 'm3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (l1 == '' || l2 == '' || l3 == '')) {    //LH
+        if ((l1 == 'O' && l2 == 'O') || (l2 == 'O' && l3 == 'O') || (l3 == 'O' && l1 == 'O')) {
+          let id = l1 == '' ? 'l1' : l2 == '' ? 'l2' : 'l3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u1 == '' || m1 == '' || l1 == '')) {    //LV
+        if ((u1 == 'O' && m1 == 'O') || (m1 == 'O' && l1 == 'O') || (l1 == 'O' && u1 == 'O')) {
+          let id = u1 == '' ? 'u1' : m1 == '' ? 'm1' : 'l1';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u2 == '' || m2 == '' || l2 == '')) {    //MV
+        if ((u2 == 'O' && m2 == 'O') || (m2 == 'O' && l2 == 'O') || (l2 == 'O' && u2 == 'O')) {
+          let id = u2 == '' ? 'u2' : m2 == '' ? 'm2' : 'l2';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u3 == '' || m3 == '' || l3 == '')) {    //RV
+        if ((u3 == 'O' && m3 == 'O') || (m3 == 'O' && l3 == 'O') || (l3 == 'O' && u3 == 'O')) {
+          let id = u3 == '' ? 'u3' : m3 == '' ? 'm3' : 'l3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u1 == '' || m2 == '' || l3 == '')) {    //RD
+        if ((u1 == 'O' && m2 == 'O') || (m2 == 'O' && l3 == 'O') || (l3 == 'O' && u1 == 'O')) {
+          let id = u1 == '' ? 'u1' : m2 == '' ? 'm2' : 'l3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u3 == '' || m2 == '' || l1 == '')) {    //LD
+        if ((u3 == 'O' && m2 == 'O') || (m2 == 'O' && l1 == 'O') || (l1 == 'O' && u3 == 'O')) {
+          let id = u3 == '' ? 'u3' : m2 == '' ? 'm2' : 'l1';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (u1 == '' || u2 == '' || u3 == '') {   //UH
+        if ((u1 == 'X' && u2 == 'X') || (u2 == 'X' && u3 == 'X') || (u3 == 'X' && u1 == 'X')) {
+          let id = u1 == '' ? 'u1' : u2 == '' ? 'u2' : 'u3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (m1 == '' || m2 == '' || m3 == '')) {    //MH
+        if ((m1 == 'X' && m2 == 'X') || (m2 == 'X' && m3 == 'X') || (m3 == 'X' && m1 == 'X')) {
+          let id = m1 == '' ? 'm1' : m2 == '' ? 'm2' : 'm3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (l1 == '' || l2 == '' || l3 == '')) {    //LH
+        if ((l1 == 'X' && l2 == 'X') || (l2 == 'X' && l3 == 'X') || (l3 == 'X' && l1 == 'X')) {
+          let id = l1 == '' ? 'l1' : l2 == '' ? 'l2' : 'l3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u1 == '' || m1 == '' || l1 == '')) {    //LV
+        if ((u1 == 'X' && m1 == 'X') || (m1 == 'X' && l1 == 'X') || (l1 == 'X' && u1 == 'X')) {
+          let id = u1 == '' ? 'u1' : m1 == '' ? 'm1' : 'l1';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u2 == '' || m2 == '' || l2 == '')) {    //MV
+        if ((u2 == 'X' && m2 == 'X') || (m2 == 'X' && l2 == 'X') || (l2 == 'X' && u2 == 'X')) {
+          let id = u2 == '' ? 'u2' : m2 == '' ? 'm2' : 'l2';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u3 == '' || m3 == '' || l3 == '')) {    //RV
+        if ((u3 == 'X' && m3 == 'X') || (m3 == 'X' && l3 == 'X') || (l3 == 'X' && u3 == 'X')) {
+          let id = u3 == '' ? 'u3' : m3 == '' ? 'm3' : 'l3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u1 == '' || m2 == '' || l3 == '')) {    //RD
+        if ((u1 == 'X' && m2 == 'X') || (m2 == 'X' && l3 == 'X') || (l3 == 'X' && u1 == 'X')) {
+          let id = u1 == '' ? 'u1' : m2 == '' ? 'm2' : 'l3';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!(this.state.tictoc) && (u3 == '' || m2 == '' || l1 == '')) {    //LD
+        if ((u3 == 'X' && m2 == 'X') || (m2 == 'X' && l1 == 'X') || (l1 == 'X' && u3 == 'X')) {
+          let id = u3 == '' ? 'u3' : m2 == '' ? 'm2' : 'l1';
+          ((document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2'))
+          setTimeout(() => { this.callWinner(cls) }, 500)
+          this.setState({
+            tictoc: true
+          })
+        }
+      }
+      if (!this.state.tictoc) {
+        var oddNos = []; //'u1', 'u3', 'm2', 'l1', 'l3'
+        var evenNos = []; //u2, m1, m3, l2
+        u1 == '' && oddNos.push('u1');
+        u3 == '' && oddNos.push('u3');
+        m2 == '' && oddNos.push('m2');
+        l1 == '' && oddNos.push('l1');
+        l3 == '' && oddNos.push('l3');
+        u2 == '' && evenNos.push('u2');
+        m1 == '' && evenNos.push('m1');
+        m3 == '' && evenNos.push('m3');
+        l2 == '' && evenNos.push('l2');
+
+        if (oddNos.length > 0) {
+          let id = oddNos[Math.floor(Math.random() * oddNos.length)];
+          (document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2') && this.setState({
+            tictoc: true
+          })
+        }
+        else if (evenNos.length > 0) {
+          let id = evenNos[Math.floor(Math.random() * evenNos.length)];
+          (document.getElementById(id).innerHTML = 'O') && (document.getElementById(id).style.textShadow = '6px 6px 21px #92bae2') && this.setState({
+            tictoc: true
+          })
+        }
+      }
+    }
+
+    // this.setState({
+    //   tictoc: true
+    // })
   }
 
   callWinner = (cls) => {
@@ -410,11 +627,17 @@ export default class TicTacToe extends PureComponent {
     })
   }
 
+  setPlayMode = (val) => {
+    this.setState({
+      p2: val
+    })
+  }
 
   render() {
     if (this.state.won == true) {
       this.playAudio('win')
     }
+    console.log(this.state.tictoc)
     return (
       <div id='main' className='body'>
         <span className='playedCounter'>Played {this.state.usersFromFB.length} times</span>
@@ -480,42 +703,60 @@ export default class TicTacToe extends PureComponent {
 
             <div className='rowBox'>
               <div className='lu sepBox'>
-                <span className='XOSpan' onClick={(e) => this.setKey(e)} id='u1' ></span>
+                <span className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                } id='u1' ></span>
               </div>
               <div className=' sepBox'>
-                <span className='XOSpan' onClick={(e) => this.setKey(e)} id='u2' ></span>
+                <span className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                } id='u2' ></span>
               </div>
               <div className='ru sepBox'>
-                <span className='XOSpan' onClick={(e) => this.setKey(e)} id='u3' ></span>
+                <span className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                } id='u3' ></span>
               </div>
             </div>
 
             <div className='rowBox'>
               <div className=' sepBox'>
-                <span id='m1' className='XOSpan' onClick={(e) => this.setKey(e)}></span>
+                <span id='m1' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                }></span>
               </div>
               <div className='m sepBox'>
-                <span id='m2' className='XOSpan' onClick={(e) => this.setKey(e)}></span>
+                <span id='m2' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                }></span>
               </div>
               <div className='sepBox'>
-                <span id='m3' className='XOSpan' onClick={(e) => this.setKey(e)}></span>
+                <span id='m3' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                }></span>
               </div>
             </div>
             <div className='rowBox'>
               <div className='ll sepBox'>
-                <span id='l1' className='XOSpan' onClick={(e) => this.setKey(e)}></span>
+                <span id='l1' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                }></span>
               </div>
               <div className=' sepBox'>
-                <span id='l2' className='XOSpan' onClick={(e) => this.setKey(e)}></span>
+                <span id='l2' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                }></span>
               </div>
               <div className='rl sepBox'>
-                <span id='l3' className='XOSpan' onClick={(e) => this.setKey(e)}></span>
+                <span id='l3' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
+                }></span>
               </div>
             </div>
           </div>
         </div>
 
         <div className='playerDetails'>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px', cursor: 'pointer' }}>
+            <span>Play with</span>
+            <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', cursor: 'pointer' }}>
+              {/* <img style={{ width: '50px', borderRadius: '25px' }} src='static/images/single_user.png' title='Friend' />
+              <img style={{ width: '50px', borderRadius: '25px' }} src='static/images/bot.jpg' title='Bot' /> */}
+              <span onClick={() => this.setPlayMode('')} className='playMode' style={{ color: this.state.p2 == '' ? 'green' : 'white' }}>Friend</span>
+              <span onClick={() => this.setPlayMode('Computer')} className='playMode' style={{ color: this.state.p2 == 'Computer' ? 'green' : 'white' }}>Computer</span>
+            </div>
+          </div>
           <div className='playerNames'>
             <input className='ply1'
               placeholder='Player 1'
@@ -527,6 +768,7 @@ export default class TicTacToe extends PureComponent {
               placeholder='Player 2'
               value={this.state.p2}
               onChange={this.p2nm}
+              disabled={this.state.p2 == 'Computer'}
               maxLength="10" />
 
           </div>
