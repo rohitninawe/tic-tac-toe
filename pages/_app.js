@@ -1,3 +1,7 @@
+// http://foto.teoteater.ee/muusika/1001%20Sound%20Effects/Sci%20Fi/Little%20Droid%2002.wav , http://foto.teoteater.ee/muusika/1001%20Sound%20Effects/Sci%20Fi/Little%20Droid%2003.wav , robot sound (wav)
+
+
+
 import React, { PureComponent } from 'react'
 import { setTimeout } from 'timers'
 import firebase from '../components/Firebase';
@@ -23,7 +27,9 @@ export default class TicTacToe extends PureComponent {
       won: false,
       music: false,
       audio: true,
-      usersFromFB: []
+      usersFromFB: [],
+      xScore: 0,
+      yScore: 0,
     }
     this.playAudio = (val) => {
       if (this.state.audio) {
@@ -90,13 +96,27 @@ export default class TicTacToe extends PureComponent {
     this.setState({
       tictoc: true,
       msg: 'none',
-      player: 'block',
-      mainbox: 'none',
+      player: 'none', //block
+      mainbox: 'none',  //none
       p1: '',
       p2: 'Computer',
       won: false,
       dev: false,
+      // finalmsg: '',
+      xScore: this.state.finalmsg == 'x' ? this.state.xScore + 1 : this.state.xScore,
+      yScore: this.state.finalmsg == 'o' ? this.state.yScore + 1 : this.state.yScore,
+    }, () => setTimeout(() => this.setState({ mainbox: 'block' }), 200))  //no callback on exit
+  }
+
+  setPlayers = () => {
+    this.setState({
+      player: 'block',
+      mainbox: 'none',
       finalmsg: '',
+      xScore: 0,
+      yScore: 0,
+      p1: '',
+      p2: 'Computer',
     })
   }
 
@@ -339,7 +359,7 @@ export default class TicTacToe extends PureComponent {
         }
       }
     }
-
+    this.state.tictoc && this.playAudio('o')
     // this.setState({
     //   tictoc: true
     // })
@@ -369,14 +389,14 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000)
+            }, () => setTimeout(() => this.endGame(), 2000)
             )
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -394,13 +414,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -418,13 +438,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -443,13 +463,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -468,13 +488,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -493,13 +513,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -517,13 +537,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -541,13 +561,13 @@ export default class TicTacToe extends PureComponent {
             this.setState({
               won: true,
               finalmsg: 'x'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
           else {
             this.setState({
               won: true,
               finalmsg: 'o'
-            }, () => setTimeout(() => this.endGame(), 4000))
+            }, () => setTimeout(() => this.endGame(), 2000))
           }
         }
       }
@@ -573,7 +593,7 @@ export default class TicTacToe extends PureComponent {
         }, () => {
           this.playAudio('gover')
 
-          setTimeout(() => this.endGame(), 4000)
+          setTimeout(() => this.endGame(), 2000)
         })
 
       }
@@ -641,6 +661,7 @@ export default class TicTacToe extends PureComponent {
     return (
       <div id='main' className='body'>
         <span className='playedCounter'>Played {this.state.usersFromFB.length} times</span>
+        {this.state.mainbox == 'block' && <span className='exit' title='Exit' onClick={this.setPlayers}>EXIT</span>}
         {this.state.music == true &&
           <img title='Turn Off Music' className='onMusic' onClick={this.handleMusic} src='static/images/music-on.png' />
         }
@@ -677,6 +698,9 @@ export default class TicTacToe extends PureComponent {
         </audio>
         <div className='mainBox'>
           <div className='gameDisplay'>
+            <div className='scoreboardDiv'>
+              <span className='scoreSpan'>{this.state.xScore} - {this.state.yScore}</span>
+            </div>
             <div className='plHeading'>
               <span>Player 1</span>
               <span>Player 2</span>
@@ -759,11 +783,11 @@ export default class TicTacToe extends PureComponent {
             </div>
             <div onClick={() => this.setPlayMode('')} className='playMode friendPlay'
               style={{
-                width: '70px', background: this.state.p2 == '' ? 'linear-gradient(90deg, rgb(0, 0, 0) 1%, rgba(69,197,236,1) 10%, rgb(25, 116, 125) 95%)' : 'black',
-                opacity: this.state.p2 == '' ? '1' : '0.6'
+                width: '70px', background: this.state.p2 != 'Computer' ? 'linear-gradient(90deg, rgb(0, 0, 0) 1%, rgba(69,197,236,1) 10%, rgb(25, 116, 125) 95%)' : 'black',
+                opacity: this.state.p2 != 'Computer' ? '1' : '0.6'
               }}>
               <img style={{ width: '50px', borderRadius: '25px' }} src='static/images/single_user.png' title='Friend' />
-              <span style={{ color: this.state.p2 == '' ? 'black' : 'white', fontWeight: '600', marginTop: '10px' }}>Friend</span>
+              <span style={{ color: this.state.p2 != 'Computer' ? 'black' : 'white', fontWeight: '600', marginTop: '10px' }}>Friend</span>
             </div>
           </div>
           <div className='playerNames'>
@@ -952,7 +976,7 @@ export default class TicTacToe extends PureComponent {
               }
               .spinner{
                 animation-name: spinner;
-                animation-duration: 1500ms;
+                animation-duration: 1000ms;
                 animation-iteration-count: infinite;
                 animation-timing-function: linear;
               }
@@ -1036,7 +1060,7 @@ export default class TicTacToe extends PureComponent {
                 width: 100%;
                 height: 5px;
                 bottom: -15px;
-                background-color: ${this.state.p2 == '' ? '#01fdff' : 'transparent'};
+                background-color: ${this.state.p2 != 'Computer' ? '#01fdff' : 'transparent'};
                 border-radius: 2px;
               }
               .nameErrorSpan{
@@ -1044,6 +1068,19 @@ export default class TicTacToe extends PureComponent {
                 font-size: larger;
                 position: absolute;
                 top: 20px;
+              }
+              .scoreboardDiv{
+                display: flex;
+                justify-content: center;
+              }
+              .scoreSpan{
+                font-size: -webkit-xxx-large;
+              }
+              .exit{
+                cursor: pointer;
+                position: absolute;
+                top: 15px;
+                font-size: larger;
               }
               @-webkit-keyframes text-flicker-out-glow {
                 0% {
@@ -1493,6 +1530,12 @@ export default class TicTacToe extends PureComponent {
               .nameErrorSpan{
                 font-size: small;
                 top: 6px;
+              }
+              .scoreSpan{
+                font-size: xx-large;
+              }
+              .exit{
+                font-size: medium;
               }
             }
           `}
