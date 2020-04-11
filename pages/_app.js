@@ -672,7 +672,7 @@ export default class TicTacToe extends PureComponent {
           </source>
         </audio>
         <audio loop={true} ref={(start) => { this.start = start; }}>
-          <source src="http://sprott.physics.wisc.edu/wop/sounds/Theme-Introshort.wav" type="audio/wav" >
+          <source src="https://docs.google.com/uc?export=download&id=1M9EbakeoX-uQhlbxI_zGT2QNuXBf0D7X" type="audio/ogg" >
           </source>
         </audio>
         <div className='mainBox'>
@@ -748,13 +748,22 @@ export default class TicTacToe extends PureComponent {
         </div>
 
         <div className='playerDetails'>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px', cursor: 'pointer' }}>
-            <span>Play with</span>
-            <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', cursor: 'pointer' }}>
-              {/* <img style={{ width: '50px', borderRadius: '25px' }} src='static/images/single_user.png' title='Friend' />
-              <img style={{ width: '50px', borderRadius: '25px' }} src='static/images/bot.jpg' title='Bot' /> */}
-              <span onClick={() => this.setPlayMode('')} className='playMode' style={{ color: this.state.p2 == '' ? 'green' : 'white' }}>Friend</span>
-              <span onClick={() => this.setPlayMode('Computer')} className='playMode' style={{ color: this.state.p2 == 'Computer' ? 'green' : 'white' }}>Computer</span>
+          <div className='playModeMainDiv'>
+            <div onClick={() => this.setPlayMode('Computer')} className='playMode computerPlay'
+              style={{
+                background: this.state.p2 == 'Computer' ? 'linear-gradient(90deg, rgb(0, 0, 0) 1%, rgba(69,197,236,1) 10%, rgb(25, 116, 125) 95%)' : 'black',
+                opacity: this.state.p2 == 'Computer' ? '1' : '0.6'
+              }}>
+              <img style={{ width: '50px', borderRadius: '25px', height: '70px' }} src='static/images/bot.png' title='Bot' />
+              <span style={{ color: this.state.p2 == 'Computer' ? 'black' : 'white', fontWeight: '600', marginTop: '10px' }}>Computer</span>
+            </div>
+            <div onClick={() => this.setPlayMode('')} className='playMode friendPlay'
+              style={{
+                width: '70px', background: this.state.p2 == '' ? 'linear-gradient(90deg, rgb(0, 0, 0) 1%, rgba(69,197,236,1) 10%, rgb(25, 116, 125) 95%)' : 'black',
+                opacity: this.state.p2 == '' ? '1' : '0.6'
+              }}>
+              <img style={{ width: '50px', borderRadius: '25px' }} src='static/images/single_user.png' title='Friend' />
+              <span style={{ color: this.state.p2 == '' ? 'black' : 'white', fontWeight: '600', marginTop: '10px' }}>Friend</span>
             </div>
           </div>
           <div className='playerNames'>
@@ -762,9 +771,11 @@ export default class TicTacToe extends PureComponent {
               placeholder='Player 1'
               value={this.state.p1}
               onChange={this.p1nm}
+              autoFocus={true}
               maxLength="10" />
 
             <input className='ply1'
+              style={{ color: this.state.p2 == 'Computer' ? 'black' : '' }}
               placeholder='Player 2'
               value={this.state.p2}
               onChange={this.p2nm}
@@ -773,7 +784,8 @@ export default class TicTacToe extends PureComponent {
 
           </div>
           <div className='enterBtnDiv'>
-            <button className='enterBtn' onClick={this.startGame}>ENTER</button>
+            {((this.state.p1 != '') && (this.state.p1 === this.state.p2)) && <span className='nameErrorSpan' >Same names are not allowed.</span>}
+            <button className='enterBtn' onClick={() => ((this.state.p1 != '') && (this.state.p1 === this.state.p2)) ? {} : this.startGame()}>ENTER</button>
           </div>
         </div>
         <style jsx>
@@ -858,6 +870,7 @@ export default class TicTacToe extends PureComponent {
                 justify-content: center;
                 align-items: center;
                 height: 200px;
+                position: relative;
               }
               .playerNames{
                 width: 100%;
@@ -989,6 +1002,48 @@ export default class TicTacToe extends PureComponent {
                 position:  absolute;
                 top: 10px;
                 left: 10px;
+              }
+              .playModeMainDiv{
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+                margin-bottom: 40px;
+              }
+              .playMode{
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  border: 2px solid white;
+                  padding: 20px;
+                  background: linear-gradient(90deg, rgb(0, 0, 0) 1%, rgba(69,197,236,1) 10%, rgb(25, 116, 125) 95%);
+                  border-radius: 5px;
+                  position: relative;
+              }
+              .computerPlay::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 5px;
+                bottom: -15px;
+                background-color: ${this.state.p2 == 'Computer' ? '#01fdff' : 'transparent'};
+                border-radius: 2px;
+              }
+              .friendPlay::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 5px;
+                bottom: -15px;
+                background-color: ${this.state.p2 == '' ? '#01fdff' : 'transparent'};
+                border-radius: 2px;
+              }
+              .nameErrorSpan{
+                color: red;
+                font-size: larger;
+                position: absolute;
+                top: 20px;
               }
               @-webkit-keyframes text-flicker-out-glow {
                 0% {
@@ -1335,7 +1390,7 @@ export default class TicTacToe extends PureComponent {
               .playerDetails{
                 display: ${this.state.player};
                 width: 280px;
-                height: 180px;
+                height: 333px;
               }
               .ply1{
                 width: 35%;
@@ -1435,7 +1490,11 @@ export default class TicTacToe extends PureComponent {
                 top: 20px;
                 left: 15px;
               }
-                }
+              .nameErrorSpan{
+                font-size: small;
+                top: 6px;
+              }
+            }
           `}
         </style>
       </div>
