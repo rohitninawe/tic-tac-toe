@@ -105,7 +105,7 @@ export default class TicTacToe extends PureComponent {
       // finalmsg: '',
       xScore: this.state.finalmsg == 'x' ? this.state.xScore + 1 : this.state.xScore,
       yScore: this.state.finalmsg == 'o' ? this.state.yScore + 1 : this.state.yScore,
-    }, () => setTimeout(() => this.setState({ mainbox: 'block' }), 200))  //no callback on exit
+    }, () => setTimeout(() => this.setState({ mainbox: 'block', finalmsg: '' }), 200))  //no callback on exit
   }
 
   setPlayers = () => {
