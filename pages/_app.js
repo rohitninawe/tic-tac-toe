@@ -83,6 +83,18 @@ export default class TicTacToe extends PureComponent {
 
   endGame = () => {
 
+    let db = firebase.firestore();
+    db.collection('users').add(
+      {
+        player1: this.state.p1,
+        player2: this.state.p2,
+        timeStamp: new Date(),
+        platform: window.navigator.appVersion,
+        browser: window.navigator.vendor,
+        status: this.state.finalmsg == 'x' ? 'Player 1 Won' : this.state.finalmsg == 'o' ? 'Player 2 Won' : this.state.finalmsg == 'g' ? 'Game Over' : ''
+      }
+    );
+
     document.getElementById('u1').innerHTML = '';
     document.getElementById('u2').innerHTML = '';
     document.getElementById('u3').innerHTML = '';
@@ -617,16 +629,16 @@ export default class TicTacToe extends PureComponent {
 
   startGame = () => {
 
-    let db = firebase.firestore();
-    db.collection('users').add(
-      {
-        player1: this.state.p1,
-        player2: this.state.p2,
-        timeStamp: new Date(),
-        platform: window.navigator.appVersion,
-        browser: window.navigator.vendor
-      }
-    );
+    // let db = firebase.firestore();
+    // db.collection('users').add(
+    //   {
+    //     player1: this.state.p1,
+    //     player2: this.state.p2,
+    //     timeStamp: new Date(),
+    //     platform: window.navigator.appVersion,
+    //     browser: window.navigator.vendor
+    //   }
+    // );
 
     this.setState({
       player: 'none',
@@ -1540,6 +1552,13 @@ export default class TicTacToe extends PureComponent {
             }
           `}
         </style>
+        {/* <style jsx global>
+            {`
+              body{
+                margin: 0;
+              }
+            `}
+          </style> */}
       </div>
     )
   }
