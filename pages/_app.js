@@ -757,7 +757,7 @@ export default class TicTacToe extends PureComponent {
             </div>
 
             <div className='rowBox'>
-              <div className=' sepBox'>
+              <div className='ml sepBox'>
                 <span id='m1' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
                 }></span>
               </div>
@@ -765,7 +765,7 @@ export default class TicTacToe extends PureComponent {
                 <span id='m2' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
                 }></span>
               </div>
-              <div className='sepBox'>
+              <div className='mr sepBox'>
                 <span id='m3' className='XOSpan' onClick={(e) => this.state.p2 == 'Computer' ? this.state.tictoc ? this.setKey(e) : {} : this.setKey(e)
                 }></span>
               </div>
@@ -999,7 +999,7 @@ export default class TicTacToe extends PureComponent {
               .lu{
                 border-color: white;
                 border-style: solid;
-                border-width: 0px 1px 1px 0px;
+                border-width: 0px 1px 0px 0px;
               }
               .msg{
                 display: ${this.state.msg};
@@ -1009,7 +1009,17 @@ export default class TicTacToe extends PureComponent {
               .ru{
                 border-color: white;
                 border-style: solid;
-                border-width: 0px 0px 1px 1px;
+                border-width: 0px 0px 0px 1px;
+              }
+              .ml{
+                border-color: white;
+                border-style: solid;
+                border-width: 1px 0px 1px 0px;
+              }
+              .mr{
+                border-color: white;
+                border-style: solid;
+                border-width: 1px 0px 1px 0px;
               }
               .m{
                 border-color: white;
@@ -1019,12 +1029,12 @@ export default class TicTacToe extends PureComponent {
               .ll{
                 border-color: white;
                 border-style: solid;
-                border-width: 1px 1px 0px 0px;
+                border-width: 0px 1px 0px 0px;
               }
               .rl{
                 border-color: white;
                 border-style: solid;
-                border-width: 1px 0px 0px 1px;
+                border-width: 0px 0px 0px 1px;
               }
               .rowBox{
                 height: 33.33%;
