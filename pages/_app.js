@@ -1401,7 +1401,7 @@ export default class TicTacToe extends PureComponent {
               
               .footerDev{
                 position: absolute;
-                bottom: 20px;
+                bottom: 50px;
                 font-size: x-small;
               }
               
