@@ -1552,13 +1552,13 @@ export default class TicTacToe extends PureComponent {
             }
           `}
         </style>
-        {/* <style jsx global>
+        <style jsx global>
             {`
               body{
                 margin: 0;
               }
             `}
-          </style> */}
+          </style>
       </div>
     )
   }
