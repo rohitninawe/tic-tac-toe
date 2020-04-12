@@ -68,16 +68,20 @@ export default class TicTacToe extends PureComponent {
 
   onCollectionUpdate = (querySnapshot) => {
     const boards = [];
-    querySnapshot.forEach((doc) => {
-      const { player1, player2, timeStamp, platform, browser } = doc.data();
-      boards.push({
-        key: doc.id,
-        doc, // DocumentSnapshot
-        player1, player2, timeStamp, platform, browser
-      });
-    });
+    console.log(querySnapshot.size)
+    // querySnapshot.forEach((doc) => {
+    //   const { player1, player2, timeStamp, platform, browser } = doc.data();
+    //   boards.push({
+    //     key: doc.id,
+    //     doc, // DocumentSnapshot
+    //     player1, player2, timeStamp, platform, browser
+    //   });
+    // });
+    // this.setState({
+    //   usersFromFB: boards
+    // }, () => console.log(this.state.usersFromFB));
     this.setState({
-      usersFromFB: boards
+      usersFromFB: querySnapshot.size
     }, () => console.log(this.state.usersFromFB));
   }
 
@@ -672,7 +676,7 @@ export default class TicTacToe extends PureComponent {
     console.log(this.state.tictoc)
     return (
       <div id='main' className='body'>
-        <span className='playedCounter'>Played {this.state.usersFromFB.length} times</span>
+        <span className='playedCounter'>Played {this.state.usersFromFB} times</span>
         {this.state.mainbox == 'block' && <span className='exit' title='Exit' onClick={this.setPlayers}>EXIT</span>}
         {this.state.music == true &&
           <img title='Turn Off Music' className='onMusic' onClick={this.handleMusic} src='static/images/music-on.png' />

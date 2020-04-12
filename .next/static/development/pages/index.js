@@ -50576,7 +50576,7 @@ var TicTacToe = /*#__PURE__*/function (_PureComponent) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*********************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fmwldeveloper%2FRepos%2Ftic-tac-toe%2Fpages%2Findex.js ***!
   \*********************************************************************************************************************************/
@@ -50599,5 +50599,5 @@ module.exports = dll_b919ee6c3f90c44aab90;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
