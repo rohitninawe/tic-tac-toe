@@ -114,11 +114,7 @@ export default class TicTacToe extends PureComponent {
       msg: 'none',
       player: 'none', //block
       mainbox: 'none',  //none
-      p1: '',
-      p2: 'Computer',
       won: false,
-      dev: false,
-      // finalmsg: '',
       xScore: this.state.finalmsg == 'x' ? this.state.xScore + 1 : this.state.xScore,
       yScore: this.state.finalmsg == 'o' ? this.state.yScore + 1 : this.state.yScore,
     }, () => setTimeout(() => this.setState({ mainbox: 'block', finalmsg: '' }), 200))  //no callback on exit
@@ -1567,12 +1563,12 @@ export default class TicTacToe extends PureComponent {
           `}
         </style>
         <style jsx global>
-            {`
+          {`
               body{
                 margin: 0;
               }
             `}
-          </style>
+        </style>
       </div>
     )
   }
