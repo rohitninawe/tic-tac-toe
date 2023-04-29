@@ -689,23 +689,23 @@ export default class TicTacToe extends PureComponent {
         <span className='msg'>Welcome to Tic-Toc-Toe</span>
         <span className='footerDev'>Developed By Rohit Ninawe</span>
         <audio ref={(x) => { this.x = x; }}>
-          <source src="https://docs.google.com/uc?export=download&id=1vAeUlZ_u9b2AYUuP8s97gddOOq_GAD6a" type="audio/ogg" >
+          <source src="https://sprott.physics.wisc.edu/wop/sounds/SOUND14.WAV" type="audio/wav" >
           </source>
         </audio>
         <audio ref={(o) => { this.o = o; }}>
-          <source src="https://docs.google.com/uc?export=download&id=1Mt9oBPe83VTq1AcoHcLnnHEnilSTwhkJ" type="audio/ogg" >
+          <source src="https://sprott.physics.wisc.edu/wop/sounds/Sound2.wav" type="audio/wav" >
           </source>
         </audio>
         <audio ref={(win) => { this.win = win; }}>
-          <source src="https://docs.google.com/uc?export=download&id=1HRQJ_yFme5GBuXWDhaZ6sEpYinSRhdR2" type="audio/ogg" >
+          <source src="https://sprott.physics.wisc.edu/wop/sounds/Drumroll-2.wav" type="audio/wav" >
           </source>
         </audio>
         <audio ref={(gover) => { this.gover = gover; }}>
-          <source src="https://docs.google.com/uc?export=download&id=1hLHQK9mgeoj3NbAZ8EmAkwNVJcLLf0KJ" type="audio/ogg" >
+          <source src="https://sprott.physics.wisc.edu/wop/sounds/SOUND42.WAV" type="audio/wav" >
           </source>
         </audio>
         <audio loop={true} ref={(start) => { this.start = start; }}>
-          <source src="https://docs.google.com/uc?export=download&id=1M9EbakeoX-uQhlbxI_zGT2QNuXBf0D7X" type="audio/ogg" >
+          <source src="https://sprott.physics.wisc.edu/wop/sounds/Theme-Introshort.wav" type="audio/wav" >
           </source>
         </audio>
         <div className='mainBox'>
