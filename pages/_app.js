@@ -53,8 +53,8 @@ export class App extends PureComponent {
     console.log("Page Visits: ", this.state.pagevisits)
     return (
       <div style={{ width: "100%", height: "100%" }}>
-        <TicTacToe />
-        {/* <GooglePage /> */}
+      {/* <TicTacToe /> */}
+        <GooglePage />
 
         <div className="float-container" onClick={this.toggleFloatContent}>
           <span style={{fontWeight: "bold"}}>{this.state.pagevisits || "RN"}</span>
