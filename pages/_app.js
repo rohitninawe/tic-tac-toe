@@ -53,58 +53,58 @@ export class App extends PureComponent {
     console.log("Page Visits: ", this.state.pagevisits)
     return (
       <div style={{ width: "100%", height: "100%" }}>
-      {/* <TicTacToe /> */}
-        <GooglePage />
+      <TicTacToe />
+        // <GooglePage />
 
-        <div className="float-container" onClick={this.toggleFloatContent}>
-          <span style={{fontWeight: "bold"}}>{this.state.pagevisits || "RN"}</span>
-          <p id="floatText">Google Search Engine Clone! Developed for Educational Purpose Only. {this.state.pagevisits && `Page Visits: ${this.state.pagevisits}`}</p>
-        </div>
+        // <div className="float-container" onClick={this.toggleFloatContent}>
+        //   <span style={{fontWeight: "bold"}}>{this.state.pagevisits || "RN"}</span>
+        //   <p id="floatText">Google Search Engine Clone! Developed for Educational Purpose Only. {this.state.pagevisits && `Page Visits: ${this.state.pagevisits}`}</p>
+        // </div>
 
-        <style jsx>{`
-         .float-container {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          width: 50px;
-          height: 50px;
-          background-color: #008CBA;
-          border-radius: 50%;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        // <style jsx>{`
+        //  .float-container {
+        //   position: fixed;
+        //   bottom: 20px;
+        //   right: 20px;
+        //   width: 50px;
+        //   height: 50px;
+        //   background-color: #008CBA;
+        //   border-radius: 50%;
+        //   cursor: pointer;
+        //   transition: all 0.3s ease;
+        //   display: flex;
+        //   justify-content: center;
+        //   align-items: center;
+        // }
         
-        .float-container:hover {
-          background-color: #00688B;
-        }
+        // .float-container:hover {
+        //   background-color: #00688B;
+        // }
         
-        .float-container.expanded {
-          width: 300px;
-          border-radius: 10px;
-        }
+        // .float-container.expanded {
+        //   width: 300px;
+        //   border-radius: 10px;
+        // }
         
-        .float-container.expanded span {
-          display: none;
-        }
+        // .float-container.expanded span {
+        //   display: none;
+        // }
         
-        .float-container.expanded p {
-          display: block;
-          margin: 0;
-          padding: 10px;
-          color: #fff;
-          font-size: 16px;
-          text-align: center;
-          transition: all 0.3s ease;
-        }
+        // .float-container.expanded p {
+        //   display: block;
+        //   margin: 0;
+        //   padding: 10px;
+        //   color: #fff;
+        //   font-size: 16px;
+        //   text-align: center;
+        //   transition: all 0.3s ease;
+        // }
 
-        #floatText {
-          display: none;
-          font-size: 12px;
-        }
-        `}</style>
+        // #floatText {
+        //   display: none;
+        //   font-size: 12px;
+        // }
+        // `}</style>
       </div>
     )
   }
